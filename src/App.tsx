@@ -9,6 +9,7 @@ import Profile from "./screens/Profile";
 import BottomNav, { Tab } from "./components/BottomNav";
 import { isOnboardingDone, clearAll } from "./lib/storage";
 import { useViewportHeight } from "./lib/useViewportHeight";
+import { track } from "./lib/analytics";
 import {
   DayAnswers,
   Entries,
@@ -37,6 +38,7 @@ export default function App() {
     return (
       <Onboarding
         onComplete={() => {
+          track("onboarding_completed");
           setOnboarded(true);
           // First launch: jump straight into filling the first day.
           setScreen("entry");
@@ -46,7 +48,8 @@ export default function App() {
   }
 
   function finishDay(answers: DayAnswers) {
-    const { entries: next } = commitToday(answers);
+    const { quality, entries: next } = commitToday(answers);
+    track("day_completed", { quality });
     setEntries({ ...next });
     setScreen("result");
   }

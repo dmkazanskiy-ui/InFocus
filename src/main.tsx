@@ -3,9 +3,12 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import { initTelegram } from "./lib/telegram";
 import { hydrate } from "./lib/store";
+import { initAnalytics, track } from "./lib/analytics";
 import "./styles/global.css";
 
 initTelegram();
+initAnalytics();
+track("app_opened");
 
 const root = createRoot(document.getElementById("root")!);
 

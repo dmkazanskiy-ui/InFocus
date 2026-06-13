@@ -2,6 +2,7 @@ import { CheckIcon, WaveIcon, CrossIcon, ShareIcon } from "../lib/icons";
 import { DayQuality } from "../lib/dayStore";
 import { haptic, shareToTelegram } from "../lib/telegram";
 import { BOT_LINK, shareMessage } from "../lib/config";
+import { track } from "../lib/analytics";
 import "./DayResult.css";
 
 interface DayResultProps {
@@ -66,6 +67,7 @@ export default function DayResult({ quality, streak, onShare, onEdit }: DayResul
           className="result__share"
           onClick={() => {
             haptic("light");
+            track("share_clicked", { quality, streak });
             shareToTelegram(shareMessage(streak, plural), BOT_LINK);
             onShare?.();
           }}

@@ -18,6 +18,7 @@ import {
 } from "../lib/storage";
 import { getUser, haptic, openLink, confirmDialog } from "../lib/telegram";
 import { REMINDERS_ENABLED } from "../lib/config";
+import { track } from "../lib/analytics";
 import formaLogo from "../assets/forma-logo.svg";
 import "./Profile.css";
 
@@ -179,6 +180,7 @@ export default function Profile({ entries, onLogout }: ProfileProps) {
           className="pf__banner"
           onClick={() => {
             haptic("light");
+            track("promo_clicked", { promo: "forma" });
             openLink("https://t.me/forma_forma_bot?startapp=ref_1397549911");
           }}
         >

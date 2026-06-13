@@ -14,6 +14,14 @@ export const BOT_LINK = "https://t.me/infocus_app_bot";
  */
 export const REMINDERS_ENABLED: boolean = false;
 
+/**
+ * PostHog analytics (frontend). The project API key is public/write-only and
+ * safe to ship in the bundle. Leave empty to disable analytics entirely (no-op).
+ * Host: EU "https://eu.i.posthog.com" or US "https://us.i.posthog.com".
+ */
+export const POSTHOG_KEY = "phc_x6wCqNqH64Hbd779CvPDwRshHjhVEWLy6yYiMvtUXaps";
+export const POSTHOG_HOST = "https://us.i.posthog.com";
+
 /** Build the streak share message. */
 export function shareMessage(streak: number, pluralDays: (n: number) => string): string {
   return `Держу ${streak} ${pluralDays(streak)} дисциплины подряд 🔥\n\n${APP_NAME}`;
