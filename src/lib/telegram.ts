@@ -13,6 +13,7 @@ export interface TelegramWebApp {
   viewportStableHeight: number;
   setHeaderColor?: (color: string) => void;
   setBackgroundColor?: (color: string) => void;
+  showConfirm?: (message: string, callback: (confirmed: boolean) => void) => void;
   onEvent: (event: string, cb: () => void) => void;
   offEvent: (event: string, cb: () => void) => void;
   HapticFeedback?: {
@@ -85,6 +86,15 @@ export function getUser(): TgUser {
     };
   }
   return { name: "Dmitrii Kazanskii" };
+}
+
+/** Native Telegram confirm dialog (falls back to window.confirm outside Telegram). */
+export function confirmDialog(message: string): Promise<boolean> {
+  const tg = getTelegram();
+  if (tg?.showConfirm) {
+    return new Promise((res) => tg.showConfirm!(message, res));
+  }
+  return Promise.resolve(window.confirm(message));
 }
 
 /** Open an external/Telegram link from within the mini app. */

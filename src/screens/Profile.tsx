@@ -16,7 +16,7 @@ import {
   getReminderTime,
   setReminderTime,
 } from "../lib/storage";
-import { getUser, haptic, openLink } from "../lib/telegram";
+import { getUser, haptic, openLink, confirmDialog } from "../lib/telegram";
 import { REMINDERS_ENABLED } from "../lib/config";
 import formaLogo from "../assets/forma-logo.svg";
 import "./Profile.css";
@@ -197,7 +197,16 @@ export default function Profile({ entries, onLogout }: ProfileProps) {
       </section>
 
       {/* выход */}
-      <button className="pf__logout" onClick={() => { haptic("light"); onLogout(); }}>
+      <button
+        className="pf__logout"
+        onClick={async () => {
+          haptic("light");
+          const ok = await confirmDialog(
+            "Выйти из аккаунта? Все данные (серия, история, профиль) будут удалены безвозвратно."
+          );
+          if (ok) onLogout();
+        }}
+      >
         Выйти из аккаунта
         <LogoutIcon size={20} />
       </button>
