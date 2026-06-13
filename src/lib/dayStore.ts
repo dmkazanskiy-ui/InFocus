@@ -167,6 +167,49 @@ export function computeStats(entries: Entries): Stats {
   };
 }
 
+export interface HabitStat {
+  kept: number;
+  total: number;
+}
+export interface HabitStats {
+  training: HabitStat;
+  food: HabitStat;
+  focus: HabitStat;
+}
+
+/** Per-habit "kept" counts across all logged days. */
+export function habitStats(entries: Entries): HabitStats {
+  const blank = (): HabitStat => ({ kept: 0, total: 0 });
+  const r: HabitStats = { training: blank(), food: blank(), focus: blank() };
+  for (const e of Object.values(entries)) {
+    (["training", "food", "focus"] as const).forEach((key) => {
+      if (e[key] !== null) {
+        r[key].total++;
+        if (e[key] === true) r[key].kept++;
+      }
+    });
+  }
+  return r;
+}
+
+/** Mood values in chronological order (last `limit` logged days). */
+export function moodSeries(entries: Entries, limit = 14): number[] {
+  return Object.entries(entries)
+    .filter(([, e]) => e.mood != null)
+    .sort(([a], [b]) => (a < b ? -1 : 1))
+    .slice(-limit)
+    .map(([, e]) => e.mood as number);
+}
+
+/** Average mood across all logged days, or null if none. */
+export function averageMood(entries: Entries): number | null {
+  const vals = Object.values(entries)
+    .map((e) => e.mood)
+    .filter((m): m is number => m != null);
+  if (!vals.length) return null;
+  return vals.reduce((a, b) => a + b, 0) / vals.length;
+}
+
 /** Russian human-readable date, e.g. "12 июня 2026". */
 export function formatHuman(key: string): string {
   const months = [

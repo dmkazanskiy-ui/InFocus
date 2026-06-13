@@ -146,7 +146,7 @@
   background: #4ade80;
 }
 .prog__bar-fill--normal {
-  background: #fbbf24;
+  background: #facc15;
 }
 .prog__bar-fill--fail {
   background: #f87171;
@@ -162,5 +162,69 @@
 
 .prog__empty {
   font-size: 14px;
+  color: #747878;
+}
+
+/* ---- per-habit ---- */
+.prog__habit-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.prog__habit-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  color: #404040;
+  flex-shrink: 0;
+}
+
+.prog__habit-label {
+  flex: 0 0 84px;
+  font-size: 14px;
+  color: #404040;
+}
+
+.prog__bar-fill--habit {
+  background: #334155;
+}
+
+/* ---- mood ---- */
+.prog__mood {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.prog__mood-avg {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.prog__mood-num {
+  font-size: 32px;
+  font-weight: 700;
+  color: #151c27;
+}
+
+.prog__mood-max {
+  font-size: 16px;
+  color: #747878;
+}
+
+.prog__spark {
+  flex: 1;
+  height: 40px;
+  min-width: 0;
+}
+
+.prog__mood-caption {
+  font-size: 12px;
   color: #747878;
 }

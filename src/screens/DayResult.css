@@ -58,7 +58,7 @@
   color: #22c55e;
 }
 .badge--normal .badge__icon {
-  color: #f59e0b;
+  color: #eab308;
 }
 .badge--fail .badge__icon {
   color: #ef4444;
@@ -81,7 +81,7 @@
   background: #dcfce7;
 }
 .badge--normal .badge__chip {
-  background: #fef3c7;
+  background: #fef9c3;
 }
 .badge--fail .badge__chip {
   background: #fee2e2;

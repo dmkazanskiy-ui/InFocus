@@ -134,8 +134,12 @@
   border-radius: 9999px;
 }
 
-.cal__dot--kept {
+.cal__dot--great {
   background: #4ade80;
+}
+
+.cal__dot--normal {
+  background: #facc15;
 }
 
 .cal__dot--fail {

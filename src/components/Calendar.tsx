@@ -101,11 +101,8 @@ export default function Calendar({ entries, onSelectDay }: CalendarProps) {
             const k = dateKey(c.date);
             const entry = entries[k];
             const isToday = k === todayK;
-            const dot = entry
-              ? entry.quality === "fail"
-                ? "fail"
-                : "kept"
-              : null;
+            // Dot colour mirrors the day's quality: great=green, normal=yellow, fail=red.
+            const dot = entry ? entry.quality : null;
             const clickable = c.inMonth && (!!entry || isToday);
             const cls = `cal__cell ${c.inMonth ? "" : "cal__cell--muted"} ${
               isToday ? "cal__cell--today" : ""
