@@ -81,19 +81,48 @@ export function evaluate(a: DayAnswers): DayQuality {
   return "normal";
 }
 
+/** Max consecutive "normal" (yellow) days allowed before the streak breaks. */
+export const MAX_NORMAL_RUN = 3;
+
 /**
- * Current consecutive streak, counting back from today.
- * A day counts while it exists and is not a "fail". If today isn't logged yet
- * the streak is still alive, so we start counting from yesterday.
+ * Current streak, counting back from today.
+ * Rules:
+ *  - a "fail" (red) day breaks the streak;
+ *  - a gap (missing day) breaks the streak;
+ *  - more than MAX_NORMAL_RUN "normal" (yellow) days in a row, without a
+ *    "great" (green) in between, breaks the streak too — i.e. the 4th yellow
+ *    resets it like a red day; a green resets the yellow counter.
+ * If today isn't logged yet the streak is still alive, so we anchor on yesterday.
  */
 export function computeStreak(entries: Entries, today = todayKey()): number {
   let cursor = entries[today] ? today : shift(today, -1);
-  let count = 0;
+
+  // Collect the run of consecutive logged, non-fail days (newest → oldest),
+  // stopping at the first gap or fail.
+  const run: DayQuality[] = [];
   while (entries[cursor] && entries[cursor].quality !== "fail") {
-    count++;
+    run.push(entries[cursor].quality);
     cursor = shift(cursor, -1);
   }
-  return count;
+
+  // Replay oldest → newest, applying the "max yellows in a row" rule.
+  let streak = 0;
+  let consecutiveNormal = 0;
+  for (let i = run.length - 1; i >= 0; i--) {
+    if (run[i] === "great") {
+      streak++;
+      consecutiveNormal = 0;
+    } else {
+      consecutiveNormal++;
+      if (consecutiveNormal > MAX_NORMAL_RUN) {
+        streak = 0; // 4th yellow in a row breaks, like a red day
+        consecutiveNormal = 0;
+      } else {
+        streak++;
+      }
+    }
+  }
+  return streak;
 }
 
 export function totalDays(entries: Entries): number {
