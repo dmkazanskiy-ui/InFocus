@@ -23,6 +23,10 @@ export interface TelegramWebApp {
   CloudStorage?: {
     setItem: (key: string, value: string, cb?: (err: Error | null, ok?: boolean) => void) => void;
     getItem: (key: string, cb: (err: Error | null, value?: string) => void) => void;
+    getItems: (keys: string[], cb: (err: Error | null, values?: Record<string, string>) => void) => void;
+    getKeys: (cb: (err: Error | null, keys?: string[]) => void) => void;
+    removeItem: (key: string, cb?: (err: Error | null, ok?: boolean) => void) => void;
+    removeItems: (keys: string[], cb?: (err: Error | null, ok?: boolean) => void) => void;
   };
   openTelegramLink?: (url: string) => void;
   openLink?: (url: string) => void;

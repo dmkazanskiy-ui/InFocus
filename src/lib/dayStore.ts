@@ -3,6 +3,7 @@
 // re-submitting the same day overwrites it. Streak is derived from the entry
 // history so it stays correct after edits.
 import { storage } from "./storage";
+import { DAY_PREFIX } from "./store";
 
 export type DayQuality = "great" | "normal" | "fail";
 
@@ -20,7 +21,6 @@ export interface DayEntry extends DayAnswers {
 
 export type Entries = Record<string, DayEntry>; // dateKey -> entry
 
-const ENTRIES_KEY = "entries";
 const BEST_KEY = "best_streak";
 
 export function emptyAnswers(): DayAnswers {
@@ -47,20 +47,20 @@ function shift(key: string, deltaDays: number): string {
 }
 
 // ---- persistence ----------------------------------------------------------
+// Each day is its own key ("d_YYYY-MM-DD") so a single value stays well under
+// the CloudStorage 4 KB limit even with a long "мысль дня".
 export function loadEntries(): Entries {
-  const raw = storage.get(ENTRIES_KEY);
-  if (raw) {
+  const out: Entries = {};
+  for (const k of storage.keys(DAY_PREFIX)) {
+    const raw = storage.get(k);
+    if (!raw) continue;
     try {
-      return JSON.parse(raw) as Entries;
+      out[k.slice(DAY_PREFIX.length)] = JSON.parse(raw) as DayEntry;
     } catch {
-      /* fall through */
+      /* skip malformed */
     }
   }
-  return {};
-}
-
-function saveEntries(e: Entries): void {
-  storage.set(ENTRIES_KEY, JSON.stringify(e));
+  return out;
 }
 
 function loadBest(): number {
@@ -170,10 +170,10 @@ export function commitToday(a: DayAnswers): {
   entries: Entries;
 } {
   const quality = evaluate(a);
-  const entries = loadEntries();
-  entries[todayKey()] = { ...a, quality };
-  saveEntries(entries);
+  // Persist just today's day key.
+  storage.set(DAY_PREFIX + todayKey(), JSON.stringify({ ...a, quality }));
 
+  const entries = loadEntries(); // now includes today
   const streak = computeStreak(entries);
   if (streak > loadBest()) storage.set(BEST_KEY, String(streak));
 

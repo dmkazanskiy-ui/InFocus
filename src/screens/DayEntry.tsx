@@ -130,6 +130,7 @@ export default function DayEntry({ dayNumber, initial, onFinish }: DayEntryProps
           id="note"
           className="thought__area"
           placeholder="Что было важным сегодня?"
+          maxLength={1000}
           value={a.note}
           onChange={(e) => set({ note: e.target.value })}
         />
