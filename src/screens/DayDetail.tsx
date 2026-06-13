@@ -5,7 +5,6 @@ import {
   SmileyIcon,
   CheckIcon,
   CrossIcon,
-  WaveIcon,
   ChevronLeftIcon,
 } from "../lib/icons";
 import { DayEntry, DayQuality, formatHuman } from "../lib/dayStore";
@@ -53,7 +52,7 @@ export default function DayDetail({ dateKey, entry, onEdit, onBack }: DayDetailP
       <div className={`dd__quality dd__quality--${q.tone}`}>
         <span className="dd__quality-icon">
           {entry.quality === "great" && <CheckIcon size={20} />}
-          {entry.quality === "normal" && <WaveIcon size={20} />}
+          {entry.quality === "normal" && <CheckIcon size={20} />}
           {entry.quality === "fail" && <CrossIcon size={20} />}
         </span>
         {q.label}

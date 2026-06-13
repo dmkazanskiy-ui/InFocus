@@ -1,4 +1,10 @@
-import { HomeIcon, UserIcon, PlusIcon } from "../lib/icons";
+import {
+  HomeIcon,
+  HomeFilledIcon,
+  UserIcon,
+  UserFilledIcon,
+  PlusIcon,
+} from "../lib/icons";
 import { haptic } from "../lib/telegram";
 import "./BottomNav.css";
 
@@ -24,7 +30,7 @@ export default function BottomNav({ active, onChange, onAdd }: BottomNavProps) {
         className={`nav__item ${active === "home" ? "nav__item--active" : ""}`}
         onClick={() => go("home")}
       >
-        <HomeIcon />
+        {active === "home" ? <HomeFilledIcon /> : <HomeIcon />}
         <span className="nav__label">Главная</span>
       </button>
 
@@ -43,7 +49,7 @@ export default function BottomNav({ active, onChange, onAdd }: BottomNavProps) {
         className={`nav__item ${active === "profile" ? "nav__item--active" : ""}`}
         onClick={() => go("profile")}
       >
-        <UserIcon />
+        {active === "profile" ? <UserFilledIcon /> : <UserIcon />}
         <span className="nav__label">Профиль</span>
       </button>
     </nav>

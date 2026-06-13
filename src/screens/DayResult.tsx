@@ -1,4 +1,4 @@
-import { CheckIcon, WaveIcon, CrossIcon, ShareIcon } from "../lib/icons";
+import { CheckIcon, CrossIcon, ShareIcon } from "../lib/icons";
 import { DayQuality } from "../lib/dayStore";
 import { haptic, shareToTelegram } from "../lib/telegram";
 import { BOT_LINK, shareMessage } from "../lib/config";
@@ -26,7 +26,7 @@ const CONTENT: Record<
   normal: {
     title: "Нормальный день",
     subtitle: () => "Ты почти удержал день. Завтра закрой чисто",
-    icon: <WaveIcon size={32} />,
+    icon: <CheckIcon size={32} />,
     tone: "normal",
   },
   fail: {
