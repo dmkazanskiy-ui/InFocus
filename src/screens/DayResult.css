@@ -1,0 +1,143 @@
+.result {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: calc(env(safe-area-inset-top, 0px) + 80px) 16px 40px;
+  background: #f5f6f7;
+}
+
+.result__inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+/* ---- glassmorphic badge ---- */
+.badge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  height: 128px;
+}
+
+.badge__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #e2e8f8;
+  filter: blur(20px);
+  opacity: 0.6;
+}
+
+.badge__main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(196, 199, 199, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: rotate(-5deg);
+}
+
+.badge__icon {
+  display: flex;
+}
+
+.badge--great .badge__icon {
+  color: #22c55e;
+}
+.badge--normal .badge__icon {
+  color: #f59e0b;
+}
+.badge--fail .badge__icon {
+  color: #ef4444;
+}
+
+/* small decorative chip, top-right */
+.badge__chip {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: #f5f6f7;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  transform: rotate(13deg);
+}
+
+.badge--great .badge__chip {
+  background: #dcfce7;
+}
+.badge--normal .badge__chip {
+  background: #fef3c7;
+}
+.badge--fail .badge__chip {
+  background: #fee2e2;
+}
+
+/* ---- text ---- */
+.result__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.result__title {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  color: #252525;
+}
+
+.result__subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #484c52;
+  max-width: 320px;
+}
+
+/* ---- share ---- */
+.result__share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  border-radius: 60px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform 0.08s ease;
+}
+
+.result__share:active {
+  transform: scale(0.99);
+}
+
+.result__edit {
+  align-self: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #747878;
+  background: transparent;
+}

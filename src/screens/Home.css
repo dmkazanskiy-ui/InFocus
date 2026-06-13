@@ -1,0 +1,91 @@
+.home {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: calc(env(safe-area-inset-top, 0px) + 28px) 16px 24px;
+  background: #f5f6f7;
+}
+
+.home__brand {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 44px;
+  color: #0f172a;
+  text-align: center;
+}
+
+/* ---- streak card ---- */
+.home__streak {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.home__streak-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home__flame {
+  display: flex;
+  color: #f97316;
+}
+
+.home__streak-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: #444748;
+}
+
+.home__streak-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.home__streak-num {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: -0.8px;
+  color: #252525;
+}
+
+.home__streak-unit {
+  font-size: 14px;
+  line-height: 19.6px;
+  color: #444748;
+}
+
+/* decorative flame bleeding off the bottom-right corner */
+.home__streak-deco {
+  position: absolute;
+  right: -14px;
+  bottom: -22px;
+  color: #fb923c;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+/* ---- "Мой прогресс" ---- */
+.home__progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: center;
+  padding: 6px 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+}

@@ -1,0 +1,166 @@
+.prog {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: calc(env(safe-area-inset-top, 0px) + 20px) 16px 24px;
+  background: #f5f6f7;
+}
+
+.prog__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prog__back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: -8px;
+  border-radius: 9999px;
+  color: #151c27;
+}
+
+.prog__back:active {
+  background: #eef2f7;
+}
+
+.prog__title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  color: #252525;
+}
+
+/* ---- hero ---- */
+.prog__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 28px 16px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.prog__hero-flame {
+  display: flex;
+  color: #f97316;
+  margin-bottom: 4px;
+}
+
+.prog__hero-num {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: #151c27;
+}
+
+.prog__hero-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #747878;
+}
+
+/* ---- stat cards ---- */
+.prog__cards {
+  display: flex;
+  gap: 10px;
+}
+
+.prog__card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 8px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+}
+
+.prog__card-num {
+  font-size: 24px;
+  font-weight: 700;
+  color: #151c27;
+}
+
+.prog__card-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #747878;
+  text-align: center;
+}
+
+/* ---- breakdown ---- */
+.prog__breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+}
+
+.prog__section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #252525;
+}
+
+.prog__bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.prog__bar-label {
+  flex: 0 0 110px;
+  font-size: 14px;
+  color: #404040;
+}
+
+.prog__bar-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  overflow: hidden;
+}
+
+.prog__bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+  min-width: 0;
+}
+
+.prog__bar-fill--great {
+  background: #4ade80;
+}
+.prog__bar-fill--normal {
+  background: #fbbf24;
+}
+.prog__bar-fill--fail {
+  background: #f87171;
+}
+
+.prog__bar-value {
+  flex: 0 0 24px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  color: #151c27;
+}
+
+.prog__empty {
+  font-size: 14px;
+  color: #747878;
+}

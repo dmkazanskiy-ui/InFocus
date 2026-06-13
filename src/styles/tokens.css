@@ -1,0 +1,45 @@
+/* Design tokens extracted from the Figma file "Mini-apps" (inFocus). */
+:root {
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-bg-accent: #f0f3ff; /* onboarding step 4 background */
+  --color-heading: #151c27;
+  --color-subtitle: #747878;
+  --color-badge-bg: #e7eefe;
+  --color-badge-bg-alt: #ffffff;
+  --color-badge-text: #444748;
+  --color-button-text: #0f172a;
+  --color-button-border: #e2e8f0;
+  --color-ink: #000000;
+  --color-pill-future-border: #c4c7c7;
+
+  /* Primary action (filled) — used for the final onboarding CTA */
+  --color-primary: #151c27;
+  --color-primary-text: #ffffff;
+
+  /* Typography */
+  --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+
+  --text-h1-size: 40px;
+  --text-h1-line: 44px;
+  --text-h1-tracking: -0.8px;
+
+  --text-sub-size: 22px;
+  --text-sub-line: 28.8px;
+  --text-sub-tracking: -0.24px;
+
+  --text-badge-size: 12px;
+  --text-badge-tracking: 0.6px;
+
+  --text-button-size: 14px;
+  --text-button-line: 24px;
+
+  /* Radii */
+  --radius-pill: 9999px;
+  --radius-button: 60px;
+
+  /* Spacing */
+  --screen-pad-x: 16px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}

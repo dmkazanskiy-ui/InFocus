@@ -1,0 +1,198 @@
+.onb {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  padding: env(safe-area-inset-top, 0px) var(--screen-pad-x)
+    calc(var(--safe-bottom) + 20px);
+  transition: background-color 0.25s ease;
+}
+
+.onb--accent {
+  background: var(--color-bg-accent);
+}
+
+/* ---- content: anchored top-left with a fixed top offset (matches Figma's
+   240px padding) so the heading sits in the same spot on every screen and
+   doesn't jump between steps. ---- */
+.onb__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 240px;
+  max-width: 384px;
+  width: 100%;
+}
+
+.onb__badge {
+  align-self: flex-start;
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  font-size: var(--text-badge-size);
+  font-weight: 600;
+  letter-spacing: var(--text-badge-tracking);
+  line-height: 12px;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 32px;
+}
+
+.onb--accent .onb__badge {
+  background: var(--color-badge-bg-alt);
+}
+
+.onb__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.onb__title {
+  color: var(--color-heading);
+  font-size: var(--text-h1-size);
+  font-weight: 700;
+  line-height: var(--text-h1-line);
+  letter-spacing: var(--text-h1-tracking);
+}
+
+.onb__subtitle {
+  color: var(--color-subtitle);
+  font-size: var(--text-sub-size);
+  font-weight: 600;
+  line-height: var(--text-sub-line);
+  letter-spacing: var(--text-sub-tracking);
+}
+
+/* ---- streak pills (step 4) ---- */
+.streak {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.streak__pill {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 80px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.streak__pill--done {
+  background: var(--color-ink);
+}
+
+.streak__icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.streak__pill--today {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.streak__today {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.streak__pill--future {
+  border: 1px solid var(--color-pill-future-border);
+  opacity: 0.5;
+}
+
+/* ---- checklist (step 5) ---- */
+.onb__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.onb__list-item {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: -0.24px;
+  color: var(--color-heading);
+}
+
+.onb__hint {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  color: var(--color-subtitle);
+  margin-top: 4px;
+}
+
+/* ---- footer ---- */
+.onb__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.onb__dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.onb__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-button-border);
+  transition: width 0.2s ease, background-color 0.2s ease;
+}
+
+.onb__dot--active {
+  width: 18px;
+  background: var(--color-heading);
+}
+
+.onb__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.onb__btn {
+  flex: 1;
+  height: 56px;
+  border-radius: var(--radius-button);
+  font-size: var(--text-button-size);
+  font-weight: 500;
+  line-height: var(--text-button-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.08s ease, opacity 0.2s ease;
+}
+
+.onb__btn:active {
+  transform: scale(0.98);
+}
+
+.onb__btn--outline {
+  background: var(--color-bg);
+  border: 1px solid var(--color-button-border);
+  color: var(--color-button-text);
+}
+
+.onb__btn--ghost {
+  flex: 0 0 auto;
+  padding: 0 22px;
+  color: var(--color-subtitle);
+  background: transparent;
+}
+
+.onb__btn--primary {
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+}

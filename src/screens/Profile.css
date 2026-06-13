@@ -1,0 +1,309 @@
+.pf {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: calc(env(safe-area-inset-top, 0px) + 28px) 16px 24px;
+  background: #f5f6f7;
+}
+
+/* ---- header ---- */
+.pf__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pf__avatar {
+  width: 59px;
+  height: 59px;
+  border-radius: 9999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+  color: #ffffff;
+}
+
+.pf__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pf__initials {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.pf__id {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pf__id-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #747878;
+}
+
+.pf__name {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #151c27;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- section ---- */
+.pf__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pf__section-title {
+  padding-left: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #334155;
+}
+
+/* ---- stats ---- */
+.pf__stats {
+  display: flex;
+  gap: 8px;
+}
+
+.pf__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.pf__stat-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #404040;
+}
+
+.pf__stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: #444748;
+}
+
+.pf__stat-line {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.pf__stat-num {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #252525;
+}
+
+.pf__stat-unit {
+  font-size: 14px;
+  color: #444748;
+}
+
+/* ---- settings card ---- */
+.pf__card {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.pf__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 20px;
+  text-align: left;
+  background: transparent;
+}
+
+/* Native time picker trigger — present in the DOM (so showPicker works) but
+   visually hidden, anchored to the right where the picker pops up. */
+.pf__time-input {
+  position: absolute;
+  right: 16px;
+  bottom: 8px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pf__row--bordered {
+  border-bottom: 1px solid #dce2f3;
+}
+
+.pf__row-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: #ededed;
+  color: #151c27;
+  flex-shrink: 0;
+}
+
+.pf__row-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pf__row-title {
+  font-size: 16px;
+  color: #151c27;
+}
+
+.pf__row-sub {
+  font-size: 14px;
+  line-height: 19.6px;
+  color: #444748;
+}
+
+.pf__row-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: #444748;
+}
+
+.pf__row-chevron {
+  display: flex;
+  color: #94a3b8;
+}
+
+/* ---- toggle ---- */
+.pf__toggle {
+  position: relative;
+  width: 48px;
+  height: 24px;
+  border-radius: 9999px;
+  background: #ededed;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.pf__toggle--on {
+  background: #252525;
+}
+
+.pf__toggle-knob {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background: #ffffff;
+  transform: translateY(-50%);
+  transition: left 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.pf__toggle--on .pf__toggle-knob {
+  left: 26px;
+}
+
+/* ---- banner (native promo) ---- */
+.pf__banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 20px;
+  text-align: left;
+  border-radius: 24px;
+  border: 1px solid rgba(183, 255, 0, 0.25);
+  background: linear-gradient(88.6deg, rgb(40, 54, 7) 0.5%, rgb(10, 18, 36) 98%);
+  overflow: hidden;
+}
+
+.pf__banner-logo {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.pf__banner-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  z-index: 1;
+}
+
+.pf__banner-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.12px;
+  color: #ffffff;
+}
+
+.pf__banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 40px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.pf__banner-deco {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #b7ff00;
+  opacity: 0.7;
+}
+
+/* ---- logout ---- */
+.pf__logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ef4444;
+}

@@ -1,0 +1,41 @@
+@import "./tokens.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-bg);
+  color: var(--color-heading);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent the bounce/overscroll that looks broken inside Telegram. */
+  overscroll-behavior: none;
+}
+
+/* The app fills the Telegram viewport. We track the real viewport height via a
+   CSS variable (--app-height) set from JS, falling back to 100dvh. */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  min-height: var(--app-height, 100dvh);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
