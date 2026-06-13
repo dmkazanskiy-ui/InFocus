@@ -17,6 +17,7 @@ import {
   setReminderTime,
 } from "../lib/storage";
 import { getUser, haptic, openLink } from "../lib/telegram";
+import { REMINDERS_ENABLED } from "../lib/config";
 import formaLogo from "../assets/forma-logo.svg";
 import "./Profile.css";
 
@@ -123,7 +124,8 @@ export default function Profile({ entries, onLogout }: ProfileProps) {
         </div>
       </section>
 
-      {/* настройки */}
+      {/* настройки — скрыты до появления бот-бэкенда (пуши невозможны без сервера) */}
+      {REMINDERS_ENABLED && (
       <section className="pf__section">
         <h2 className="pf__section-title">Настройки</h2>
         <div className="pf__card">
@@ -168,6 +170,7 @@ export default function Profile({ entries, onLogout }: ProfileProps) {
           </button>
         </div>
       </section>
+      )}
 
       {/* попробуйте также */}
       <section className="pf__section">
