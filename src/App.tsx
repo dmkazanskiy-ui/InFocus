@@ -54,18 +54,25 @@ export default function App() {
     setScreen("result");
   }
 
-  // "+" button: not logged yet → fill; already logged → show final status.
+  // "+" button: today not logged → fill; already logged → open its details
+  // (which shows the "мысль дня" and an edit link).
   function openAdd() {
-    setScreen(isTodayLogged(entries) ? "result" : "entry");
+    if (isTodayLogged(entries)) {
+      setDetailKey(todayKey());
+      setScreen("detail");
+    } else {
+      setScreen("entry");
+    }
   }
 
-  // Calendar day tap: today → normal add flow; past logged day → its detail.
+  // Calendar day tap: any logged day (incl. today) → its details; an unlogged
+  // today → straight to filling it.
   function selectDay(key: string) {
-    if (key === todayKey()) {
-      openAdd();
-    } else if (entries[key]) {
+    if (entries[key]) {
       setDetailKey(key);
       setScreen("detail");
+    } else if (key === todayKey()) {
+      setScreen("entry");
     }
   }
 
@@ -97,6 +104,7 @@ export default function App() {
           <DayDetail
             dateKey={detailKey}
             entry={entries[detailKey]}
+            onEdit={detailKey === todayKey() ? () => setScreen("entry") : undefined}
             onBack={() => setScreen("home")}
           />
         )}
